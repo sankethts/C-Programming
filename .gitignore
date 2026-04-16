@@ -1,0 +1,24 @@
+# Ignore compiled output files
+a.out
+*.out
+*.exe
+*.o
+*.obj
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore txt files
+*.txt
+
+# Ignore .zip files
+*.zip
+
+# Ignore temporary files
+*.log
+*.tmp
+*.swp
+
+# Ignore OS files
+.DS_Store
+Thumbs.db

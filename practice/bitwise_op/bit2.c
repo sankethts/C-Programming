@@ -42,8 +42,8 @@ int main()
 #if 1
 int main()
 {
-    char a=20;
-    char b=a<<3;
-    printf("%d\n", b);
+    int num=224, pos=5, n=3;
+    num=(num>>pos)&((1<<n)-1);
+    printf("%d\n", num);
 }
 #endif

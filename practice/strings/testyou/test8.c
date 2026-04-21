@@ -1,5 +1,5 @@
 //wap to concatenate string
-/*
+#if 0
 //with using strcat()
 #include<stdio.h>
 #include<string.h>
@@ -13,9 +13,9 @@ int main()
     strcat(str1, str2);
     printf("Concatenated string: %s\n", str1);
 }
-*/
+#endif
 
-
+#if 1
 //without strcat()
 #include<stdio.h>
 #include<string.h>
@@ -34,5 +34,6 @@ int main()
     }
     str1[size1]='\0';
     printf("Concatenated string: %s\n", str1);
-    printf("%zu\n", sizeof(str1));
+    //printf("%zu\n", sizeof(str1));
 }
+#endif

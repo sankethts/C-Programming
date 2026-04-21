@@ -1,5 +1,5 @@
 //String notes
-/*
+
 //7)replace a character
 #include<stdio.h>
 int main()
@@ -16,7 +16,7 @@ int main()
     }
     printf("%s\n", str);
 }
-*/
+
 /*
 //8)wap to count words in a sentence
 #include<stdio.h>

@@ -1,5 +1,5 @@
 //wap to find duplicate characters in string
-/*
+#if 0
 #include<stdio.h>
 int main()
 {
@@ -12,17 +12,17 @@ int main()
         {
             if(str[i]==str[j])
             {
-                printf("%c ", str[i]);
+                printf("%c", str[i]);
                 break;
             }
         }
     }
     printf("\n");
 }
-*/
+#endif
 
 
-
+#if 1
 //wap to remove duplicate characters in string
 #include<stdio.h>
 int main()
@@ -51,3 +51,4 @@ int main()
     printf("%s", str);
     printf("\n");
 }
+#endif

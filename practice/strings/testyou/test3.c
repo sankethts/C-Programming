@@ -1,7 +1,8 @@
 //wap to reverse a string
-/*
+#if 1
 #include<stdio.h>
 #include<string.h>
+// Actually reversing the string
 int main()
 {
     char str[30];
@@ -16,10 +17,12 @@ int main()
     }
     printf("%s\n", str);
 }
-*/
+#endif
 
+#if 0
 #include<stdio.h>
 #include<string.h>
+// Printing the string in reverse
 int main()
 {
     char str[30];
@@ -32,3 +35,4 @@ int main()
     }
     printf("\n");
 }
+    #endif

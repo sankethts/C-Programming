@@ -1,5 +1,5 @@
 //wap to compare two strings
-/*
+#if 1
 //with strcmp()
 #include<stdio.h>
 #include<string.h>
@@ -13,8 +13,8 @@ int main()
     int res=strcmp(str1, str2);
     printf("%d\n", res);
 }
-*/
-
+#endif
+#if 0
 //without strcmp()
 #include<stdio.h>
 #include<string.h>
@@ -43,3 +43,4 @@ int main()
         printf("Strings are not equal\n");
     }
 }
+    #endif

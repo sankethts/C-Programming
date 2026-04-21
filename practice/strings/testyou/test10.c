@@ -1,7 +1,7 @@
 //strstr() searches for the first occurrence of a substring inside a main string and returns a pointer to that position.
 
 //wap to find sub string present or not
-/*
+#if 0
 //with strstr()
 #include<stdio.h>
 #include<string.h>
@@ -24,8 +24,8 @@ int main()
     }
 
 }
-*/
-
+#endif
+#if 1
 //without strstr
 #include<stdio.h>
 #include<string.h>
@@ -61,3 +61,4 @@ int main()
         printf("Substring not found\n");
     }
 }
+#endif

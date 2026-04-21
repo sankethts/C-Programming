@@ -145,7 +145,7 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 //count the set bit
 int main()
 {
@@ -167,5 +167,14 @@ int main()
     printf("\nCount: %d", count);
     printf("\n");
     return 0;
+}
+#endif
+
+#if 1
+int main()
+{
+    char ch=127;
+    printf("%d\n", ~ch);
+
 }
 #endif

@@ -379,8 +379,8 @@ int main()
 #endif
 
 
-#if 1
-void print(char **str)
+#if 0
+void print(char *str[8])
 {
     for(int i=0; i<5; i++)
     {
@@ -402,7 +402,143 @@ void print(char **str)
 }
 int main()
 {
-    char str[5][8]={"file", "edit", "view", "insert", "help"};
+    char *str[8]={"file", "edit", "view", "insert", "help"};
     print(str);
+}
+#endif
+
+#if 0
+//pointer to an array
+int main()
+{
+    int arr[3]={1,2,3};
+    int *p1;
+    int (*p2)[3];
+    p1=arr;
+    p2=&arr;
+    printf("%u %u\n", p1+0, p2+0);
+    printf("%u %u\n", p1+1, p2+1);
+    printf("%u %u\n", p1+2, p2+2);
+    printf("%d %d\n", p2[0][0], *(*p2+0));
+    printf("%d %d\n", p2[0][1], *(*p2+1));
+    printf("%d %d\n", p2[0][2], *(*p2+2));
+    for(int i=0; i<1; i++)
+    {
+        for(int j=0; j<3; j++)
+        {
+            printf("%d ", p2[i][j]);
+        }
+
+    }
+    printf("\nsizeof p1: %zu\n", sizeof(p1));
+    printf("sizeof p2: %zu\n", sizeof(p2));
+    printf("sizeof *p1: %zu\n", sizeof(*p1));
+    printf("sizeof *p2: %zu\n", sizeof(*p2));
+    printf("sizeof **p2: %zu\n", sizeof(**p2));
+    return 0;
+}
+#endif
+
+#if 0
+#include<stdlib.h>
+int main()
+{
+    int (*p)[3];
+    p=malloc(sizeof(*p)*3);
+    (*(p+0))[0]=1;
+    (*(p+1))[1]=2;
+    (*(p+2))[2]=3;
+
+    printf("%d\n",p[0][0]);
+    printf("%d\n",p[1][1]);
+    printf("%d\n",p[2][2]);
+}  
+#endif
+
+#if 0
+#include<stdlib.h>
+int main()
+{
+    int (*p)[3];
+    p=malloc(sizeof(*p)*3);
+    #if 0
+    (*(p+0))[0]=1;
+    (*(p+0))[1]=2;
+    (*(p+0))[2]=3;
+    (*(p+1))[0]=4;
+    (*(p+1))[1]=5;
+    (*(p+1))[2]=6;
+    (*(p+2))[0]=7;
+    (*(p+2))[1]=8;
+    (*(p+2))[2]=9;
+    printf("%d ",p[0][0]);
+    printf("%d ",p[0][1]);
+    printf("%d\n",p[0][2]);
+    printf("%d ",p[1][0]);
+    printf("%d ",p[1][1]);
+    printf("%d\n",p[1][2]);
+    printf("%d ",p[2][0]);
+    printf("%d ",p[2][1]);
+    printf("%d\n",p[2][2]);
+    #endif
+
+    #if 1
+    for(int i=0; i<3; i++)
+    {
+        for(int j=0; j<3; j++)
+        {
+            scanf("%d", &p[i][j]);
+        }
+    }
+    for(int i=0; i<3; i++)
+    {
+        for(int j=0; j<3; j++)
+        {
+            printf("%d ", p[i][j]);
+            //printf("%d ", *(*(p+i)+j));
+            printf("%d ", )
+        }
+        printf("\n");
+    }
+    #endif
+}
+#endif
+
+#if 1
+void print_arr(int r, int c, int arr[][c]); //same as below
+void read_arr(int r, int c, int arr[][c]); //or int (*p)[c]
+int main()
+{
+    int r, c;
+    printf("Enter row and col: ");
+    scanf("%d %d", &r, &c);
+    int arr[r][c];
+    printf("Enter %d elements:\n", r*c);
+    read_arr(r, c, arr);
+    printf("Array elements are:\n");
+    print_arr(r, c, arr);
+    return 0;
+}
+void read_arr(int r, int c, int (*p)[c])
+{
+    for(int i=0; i<r; i++)
+    {
+        for(int j=0; j<c; j++)
+        {
+            scanf("%d", &p[i][j]);
+        }
+    }
+}
+void print_arr(int r, int c, int (*p)[c])
+{
+    for(int i=0; i<r; i++)
+    {
+        for(int j=0; j<c; j++)
+        {
+            printf("%d ", p[i][j]);
+        }
+        printf("\n");
+    }
+    
 }
 #endif

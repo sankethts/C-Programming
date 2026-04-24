@@ -504,7 +504,7 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 void print_arr(int r, int c, int arr[][c]); //same as below
 void read_arr(int r, int c, int arr[][c]); //or int (*p)[c]
 int main()
@@ -540,5 +540,59 @@ void print_arr(int r, int c, int (*p)[c])
         printf("\n");
     }
     
+}
+#endif
+
+#if 0
+void print_array(int row, int col, int *p)
+{
+    int i, j;
+    for(i=0; i<row; i++)
+    {
+        for(j=0; j<col; j++)
+        {
+            printf("%d ", *((p+i*col)+j));
+        }
+        printf("\n");
+    }
+}
+int main()
+{
+    int a[2][3]={{1,2,3}, {4,5,6}};
+    print_array(2, 3, (int *)a);
+    printf("\n");
+    print_array(2, 3, *a);
+    printf("\n");
+    print_array(2, 3, &a[0][0]);
+    printf("\n");
+    print_array(2, 3, a[0]);
+    return 0;
+}
+#endif
+
+#if 1
+void print_array(int (*p)[4])
+{
+    int i, j;
+    for(i=0; i<2; i++)
+    {
+        for(j=0; j<3; j++)
+        {
+            printf("%d ", p[i][j]);
+        }
+        printf("\n");
+    }
+}
+int main()
+{
+    int a[2][3]={{1,2,3}, {4,5,6}};
+    print_array(a);
+    // printf("\n");
+    // print_array(2, 3, *a);
+    // printf("\n");
+    // print_array(2, 3, &a[0][0]);
+    // printf("\n");
+    // print_array(2, 3, a[0]);
+    return 0;
 }
 #endif

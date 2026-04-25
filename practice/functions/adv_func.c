@@ -119,7 +119,7 @@ int main(int argc, char *argv[], char *envp[])
 }
 #endif
 
-#if 1
+#if 0
 // get envp in program after unsetenv
 int main(int argc, char *argv[], char *envp[])
 {
@@ -145,5 +145,150 @@ int main(int argc, char *argv[], char *envp[])
         printf("Found: %s\n", ptr);
     }
     return 0;
+}
+#endif
+
+#if 0
+//function pointers 24/02/2026
+int add(int, int);
+int sub(int, int);
+int operation(int x, int y, int (*fp)(int, int));
+
+int main()
+{
+    int res;
+    res=operation(10, 20, add);
+    printf("res: %d\n", res);
+    res=operation(10, 20, sub);
+    printf("res: %d\n", res);
+    return 0;
+}
+int add(int x, int y)
+{
+    return x+y;
+}
+int sub(int x, int y)
+{
+    return x-y;
+}
+int operation(int x, int y, int (*fp)(int, int))
+{
+    return fp(x, y);
+}
+#endif
+
+#if 0
+int add(int, int);
+int sub(int, int);
+int operation(int x, int y, int (*fp)(int, int));
+
+int main()
+{
+    int res;
+    int (*fptr)(int, int);
+    fptr=add;
+    res=operation(10, 20, fptr);
+    printf("res: %d\n", res);
+    fptr=sub;
+    res=operation(10, 20, fptr);
+    printf("res: %d\n", res);
+    return 0;
+}
+int add(int x, int y)
+{
+    return x+y;
+}
+int sub(int x, int y)
+{
+    return x-y;
+}
+int operation(int x, int y, int (*fp)(int, int))
+{
+    return fp(x, y);
+}
+#endif
+
+#if 0
+//array of function pointers
+int add(int, int);
+int sub(int, int);
+int operation(int x, int y, int (*fp)(int, int));
+
+int main()
+{
+    int res;
+    int (*fptr[2])(int, int)={add, sub};
+    printf("sizeof fptr: %zu\n", sizeof(fptr));
+    res=operation(10, 20, fptr[0]);
+    printf("res: %d\n", res);
+    res=operation(10, 20, fptr[1]);
+    printf("res: %d\n", res);
+    return 0;
+}
+int add(int x, int y)
+{
+    return x+y;
+}
+int sub(int x, int y)
+{
+    return x-y;
+}
+int operation(int x, int y, int (*fp)(int, int))
+{
+    return fp(x, y);
+    //return (*fp)(x, y);
+    //return *fp(x, y);//error(missed brackets)
+}
+#endif
+
+#if 0
+static int *ptr;
+int test();
+void my_exit(void);
+int main()
+{
+    atexit(my_exit);
+    ptr=malloc(100);
+    test();
+    printf("Hello in main\n");
+    return 0;
+}
+void my_exit(void)
+{
+    printf("Exiting program\n");
+    if(ptr)
+     free(ptr);
+}
+int test()
+{
+    printf("in test\n");
+    //exit(0);
+}
+#endif
+
+#if 1
+//it will call in the reverse order of their registerd way
+void test1(void);
+void test2(void);
+void test3(void);
+int main()
+{
+    atexit(test1);
+    atexit(test2);
+    atexit(test3);
+    printf("In main\n");
+    return 0;
+}
+void test1(void)
+{
+    printf("test1\n");
+}
+void test2(void)
+{
+    printf("test2\n");
+}
+void test3(void)
+{
+    printf("test3\n");
 }
 #endif

@@ -15,6 +15,7 @@ int main()
 #endif
 
 #if 0
+// accessing 2d array elements in different ways
 int main()
 {
     int arr[2][3]={10, 20, 30, 40, 50, 60};
@@ -45,6 +46,7 @@ int main()
 #endif
 
 #if 0
+// get 2d array values from user, and print those values, and find max and min value
 int main()
 {
     int m, n;
@@ -69,7 +71,7 @@ int main()
         printf("\n");
     }
     printf("\n");
-    int max=arr[0][0], min=arr[0][0];
+    int max=arr[1][1], min=arr[1][1];
     for(int i=0; i<m; i++)
     {
         for(int j=0; j<n; j++)
@@ -93,15 +95,16 @@ int main()
 //sort all elements
 
 #if 0
+// array of pointers
 int main()
 {
-    int a=10;
-    int b=20;
-    int c=30;
+    int a[]={10, 20, 30};//int a=10;
+    int b[]={20, 30, 40};//int b=20;
+    int c[]={30, 40, 50};//int c=30;
     int *ptr[3];
-    ptr[0]=&a;
-    ptr[1]=&b;
-    ptr[2]=&c; 
+    ptr[0]=a;//&a;
+    ptr[1]=b;//&b;
+    ptr[2]=c;//&c;
     
     int i, j;
     for(i=0; i<3; i++)
@@ -114,10 +117,11 @@ int main()
 
     for(i=0; i<3; i++)
     {
-        for(j=0; j<1; j++)
+        for(j=0; j<3; j++)
         {
             printf("%d ", ptr[i][j]);//same using two loop
         }
+        printf("\n");
     }
     printf("\n");
 }
@@ -255,9 +259,9 @@ void print_elements(int *ptr[])
     {
         for(int j=0; j<2; j++)
         {
-            //printf("%d ", ptr[i][j]);
-            //printf("%d ", *(*(ptr+i)+j));
-            //printf("%d ", *(ptr[i]+j));
+            printf("%d ", ptr[i][j]);
+            printf("%d ", *(*(ptr+i)+j));
+            printf("%d ", *(ptr[i]+j));
             //printf("%d ", (*(ptr+i))+j);
         }
         printf("\n");
@@ -278,10 +282,11 @@ int main()
 }
 #endif
 
-#if 0
+#if 1
+//array of strings
 int main()
 {
-    char s[3][8]={"Array", "of", "strings"};
+    char s[3][3]={"Array", "of", "strings"};
     printf("%s %s %s\n", s[0], s[1], s[2]);
 
     for(int i=0; i<3; i++)
@@ -294,33 +299,10 @@ int main()
     {
         for(int j=0; s[i][j]!='\0'; j++)
         {
-            printf("%c ", s[i][j]);
+            //printf("%c", s[i][j]);
+            printf("%u ", &s[i][j]);
         }
-        printf(" ");
-    }
-    printf("\n");
-}
-#endif
-
-#if 0
-int main()
-{
-    char *s[3]={"Array", "of", "strings"};
-    printf("%s %s %s\n", s[0], s[1], s[2]);
-
-    for(int i=0; i<3; i++)
-    {
-        printf("%s ", s[i]);
-    }
-    printf("\n");
-
-    for(int i=0; i<3; i++)
-    {
-        for(int j=0; s[i][j]!='\0'; j++)
-        {
-            printf("%c ", s[i][j]);
-        }
-        printf(" ");
+        printf("\n");
     }
     printf("\n");
 }
@@ -350,16 +332,16 @@ int main()
 }
 #endif
 
-
 #if 0
-void read(int m, int n, char s[m][n])
+//doubt
+void read(int m, int n, char s[][n])
 {
     for(int i=0; i<m; i++)
     {
         scanf("%s", s[i]);
     }
 }
-void print(int m, int n, char s[m][n])
+void print(int m, int n, char s[][n])
 {
     for(int i=0; i<m; i++)
     {
@@ -380,9 +362,10 @@ int main()
 
 
 #if 0
+//doubt
 void print(char *str[8])
 {
-    for(int i=0; i<5; i++)
+    for(int i=0; i<8; i++)
     {
         printf("%d. %s\n", i+1, str[i]);
     }
@@ -570,7 +553,7 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 void print_array(int (*p)[4])
 {
     int i, j;

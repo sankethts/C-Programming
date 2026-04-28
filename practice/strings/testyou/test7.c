@@ -9,8 +9,9 @@ int main()
     char str1[30], str2[30];
     printf("Enter string: ");
     scanf("%[^\n]", str1);
-    char *ptr = strcpy(str2, str1);//returns destination pointer
-    printf("Copied string: %s\n", ptr);
+    strcpy(str2, str1);//returns destination pointer
+    //printf("Copied string: %s\n", ptr);
+    printf("Copied string: %s\n", str2);
 }
 #endif
 

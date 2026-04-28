@@ -31,17 +31,15 @@ int main()
 {
     char str[]="hello";
     char ch;
+    int k=0;
     scanf("%c", &ch);
     for (int i=0; str[i]!='\0'; i++)
     {
-        if (str[i]==ch)
+        if (str[i]!=ch)
         {
-            for (int j=i; str[j]!='\0'; j++)
-            {
-                str[j]=str[j+1];
-            }
-            i--;
+            str[k++]=str[i];
         }
     }
+    str[k]='\0';
     printf("%s", str);
 }

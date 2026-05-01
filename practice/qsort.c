@@ -32,12 +32,12 @@ void print_arr(int arr[], int n)
 }
 int descending(const void *a, const void *b)
 {
-    return *(int *)a < *(int *)b;
-    //return ascending(b, a); // simple swap arguments
+    //return *(int *)a < *(int *)b;
+    return ascending(b, a); // simple swap arguments
 }
 #endif
 
-#if 0
+#if 1
 // Sorting strings
 int cmp_strings(const void *a, const void *b);
 int main()
@@ -63,7 +63,7 @@ int cmp_strings(const void *a, const void *b)
 }
 #endif
 
-#if 1
+#if 0
 // Sorting structs
 typedef struct
 {

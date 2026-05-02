@@ -282,11 +282,11 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 //array of strings
 int main()
 {
-    char s[3][3]={"Array", "of", "strings"};
+    char s[3][8]={"Array", "of", "strings"};
     printf("%s %s %s\n", s[0], s[1], s[2]);
 
     for(int i=0; i<3; i++)
@@ -300,7 +300,7 @@ int main()
         for(int j=0; s[i][j]!='\0'; j++)
         {
             //printf("%c", s[i][j]);
-            printf("%u ", &s[i][j]);
+            printf("%c ", s[i][j]);
         }
         printf("\n");
     }
@@ -363,9 +363,9 @@ int main()
 
 #if 0
 //doubt
-void print(char *str[8])
+void print(char *str[5])
 {
-    for(int i=0; i<8; i++)
+    for(int i=0; i<5; i++)
     {
         printf("%d. %s\n", i+1, str[i]);
     }
@@ -385,7 +385,7 @@ void print(char *str[8])
 }
 int main()
 {
-    char *str[8]={"file", "edit", "view", "insert", "help"};
+    char *str[5]={"file", "edit", "view", "insert", "help"};
     print(str);
 }
 #endif
@@ -411,7 +411,6 @@ int main()
         {
             printf("%d ", p2[i][j]);
         }
-
     }
     printf("\nsizeof p1: %zu\n", sizeof(p1));
     printf("sizeof p2: %zu\n", sizeof(p2));

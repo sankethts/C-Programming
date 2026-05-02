@@ -1,10 +1,12 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #if 0
 int main()
 {
     FILE *fp;
-    fp = fopen("testing.txt","r");
+    fp = fopen("new.txt","r");
     if(fp == NULL)//if new.txt is not there, it returns NULL, but NULL cannot be accessed as an address(segmentation fault), to avoid it we are checking this condition
     {
         printf("File Not Present, Failure\n");
@@ -19,7 +21,7 @@ int main()
 int main()
 {
     FILE *fp;
-    fp = fopen("testing.txt","r");
+    fp = fopen("new.txt","r");
     if(fp == NULL)
     {
         perror("ERROR");//automatically gives reason for the error
@@ -110,7 +112,6 @@ int main()
             break;
         fputc(ch, fptr);
     }
-    printf("\n");
     fclose(fp);
     fclose(fptr);
     return 0;
@@ -193,7 +194,7 @@ int main()
     fp = fopen("new1.txt","r");
     if(fp == NULL)
     {
-        perror("ERROR");
+        perror("Error:");
         return -1;
     }
     char ch;
@@ -201,10 +202,11 @@ int main()
     printf("C is in the position:\n");
     while((ch = fgetc(fp)) != EOF)
     {
-        if(ch == 'C')
+        if(ch == 'c')
             printf("%ld ",ftell(fp));
         //fputc(ch,stdout);
     }
+    printf("\n");
     fclose(fp);
     return 0;
 }
@@ -223,13 +225,13 @@ int main()
         perror("ERROR");
         return -1;
     }
-    fprintf(fp,"%d %c %d %s %f\n",2,'+',1,"is",1.1);
+    fprintf(fp,"%d %c %d %s %g\n",2,'+',1,"is",1.1);
     
     rewind(fp); // ? This will rewind / make the pointer point to begining of the file
     
     fscanf(fp,"%d %c %d %s %f",&n1,&oper,&n2,str,&n3);
 
-    printf("%d %c %d %s %f\n",n1,oper,n2,str,n3);
+    printf("%d %c %d %s %g\n",n1,oper,n2,str,n3);
     fclose(fp);
     return 0;
 }
@@ -311,7 +313,7 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 int main()
 {
     FILE *fp, *fc;
@@ -333,10 +335,7 @@ int main()
 }
 #endif
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
+#if 0
 #define MAX_NAME_LEN 50
 #define MAX_PHONE_LEN 15
 #define MAX_CONTACTS 100
@@ -403,3 +402,4 @@ int main() {
 
     return 0;
 }
+#endif

@@ -124,7 +124,7 @@ int main(int argc, char *argv[], char *envp[])
 int main(int argc, char *argv[], char *envp[])
 {
     char *ptr;
-    //setenv("var1", "environment12346", 1);
+    setenv("var1", "environment12346", 1);
     ptr=getenv("var1");
     if(ptr==NULL)
     {
@@ -158,9 +158,9 @@ int main()
 {
     int res;
     res=operation(10, 20, add);
-    printf("res: %d\n", res);
+    printf("sum: %d\n", res);
     res=operation(10, 20, sub);
-    printf("res: %d\n", res);
+    printf("sub: %d\n", res);
     return 0;
 }
 int add(int x, int y)
@@ -262,11 +262,11 @@ void my_exit(void)
 int test()
 {
     printf("in test\n");
-    //exit(0);
+    exit(0);
 }
 #endif
 
-#if 1
+#if 0
 //it will call in the reverse order of their registerd way
 void test1(void);
 void test2(void);
@@ -290,5 +290,14 @@ void test2(void)
 void test3(void)
 {
     printf("test3\n");
+}
+#endif
+
+#if 1
+int main()
+{
+int a[] = {1,2,3,4};
+int *p = a;
+printf("%d", *p++);
 }
 #endif

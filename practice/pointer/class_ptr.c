@@ -24,16 +24,19 @@ int main()
     char *cp;
     float *fp;
     double *dp;
+    int *ptr[10];
 
     printf("Size of ip: %zu\n", sizeof(ip));
     printf("Size of cp: %zu\n", sizeof(cp));
     printf("Size of fp: %zu\n", sizeof(fp));
     printf("Size of dp: %zu\n", sizeof(dp));
+    printf("Size of ptr: %zu\n", sizeof(ptr));
 
     printf("Size of *ip: %zu\n", sizeof(*ip));
     printf("Size of *cp: %zu\n", sizeof(*cp));
     printf("Size of *fp: %zu\n", sizeof(*fp));
     printf("Size of *dp: %zu\n", sizeof(*dp));
+    printf("Size of *ptr: %zu\n", sizeof(*ptr));
 }
 #endif
 
@@ -119,8 +122,10 @@ int main()
     return 0;
 }
 #endif
+
 //generic compare, copy
-#if 1
+//swap any datatype values
+#if 0
 void swap(void *first, void *second, int size)
 {
     char temp;
@@ -135,7 +140,7 @@ void swap(void *first, void *second, int size)
 }
 int main()
 {
-    int n1=10, n2=20;
+    int n1=1000, n2=2000;
     printf("Bef: %d %d\n", n1, n2);
     swap(&n1, &n2, sizeof(int));
     printf("Aft: %d %d\n", n1, n2);
@@ -292,7 +297,7 @@ int main()
     ptr=&num;
     printf("*ptr: %d\n", *ptr);
     *ptr=200;
-    //num=300;//error(read only variable)
+    num=300;//error(read only variable)
     printf("num: %d\n", num);
     return 0;
 }
@@ -335,11 +340,11 @@ int main()
 }
 #endif
 
-#if 0
+#if 1
 int main()
 {
     int *p1, *p2;
-    #if 0
+    #if 1
     p1+10;
     p2-10;
     p2-p1;

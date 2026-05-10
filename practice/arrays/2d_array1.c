@@ -507,14 +507,108 @@ int main()
 //Search for an element in a sorted row-wise and column-wise matrix.
 int main()
 {
+    int r, c;
+    printf("Enter row and column: ");
+    scanf("%d %d", &r, &c);
+    int arr[r][c];
+    printf("Enter %d array elements in sorted order:\n", r*c);
+    for(int i=0; i<r; i++)
+    {
+        for(int j=0; j<c; j++)
+        {
+            scanf("%d", &arr[i][j]);
+        }
+    }
     
+    int key;
+    printf("Enter element to search: ");
+    scanf("%d", &key);
+
+    //start from top right corner
+    int i=0, j=c-1;
+
+    while(i<r && j>=0)
+    {
+        if(arr[i][j]==key)
+        {
+            printf("Element found at position arr[%d][%d]\n", i, j);
+            return 0;
+        }
+        else if(arr[i][j]>key)
+        {
+            j--;//eliminate current column
+        }
+        else
+        {
+            i++;//eliminate current row
+        }
+    }
+    printf("Not found\n");
+    return 0;
+
 }
 #endif
 
-#if 1
+#if 0
 //Rotate a matrix 90° clockwise without extra space.
+//only square matrix
+void print(int n, int arr[][n]);
 int main()
 {
-    
+    int n;
+    printf("Enter size: ");
+    scanf("%d", &n);
+    int arr[n][n];
+    printf("Enter %d array elements:\n", n*n);
+    for(int i=0; i<n; i++)
+    {
+        for(int j=0; j<n; j++)
+        {
+            scanf("%d", &arr[i][j]);
+        }
+    }
+
+    printf("Original array:\n");
+    print(n, arr);
+
+    //transpose
+    for(int i=0; i<n; i++)
+    {
+        for(int j=i+1; j<n; j++)
+        {
+            int temp=arr[i][j];
+            arr[i][j]=arr[j][i];
+            arr[j][i]=temp;
+        }
+    }
+
+    //reverse 90
+    for(int i=0; i<n; i++)
+    {
+        int left =0, right=n-1;
+        while(left<right)
+        {
+            int temp=arr[i][left];
+            arr[i][left]=arr[i][right];
+            arr[i][right]=temp;
+            left++;
+            right--;
+        }
+    }
+
+    printf("Reversed array:\n");
+    print(n, arr);
+    return 0;
+}
+void print(int n, int arr[][n])
+{
+    for(int i=0; i<n; i++)
+    {
+        for(int j=0; j<n; j++)
+        {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
 }
 #endif

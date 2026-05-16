@@ -76,7 +76,7 @@ int main()
     printf("%d %c %c\n", a, ch, ch1);
 }
 #endif
-#if 1
+#if 0
 #include<stdio.h>
 int main()
 {
@@ -93,7 +93,7 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 int main()
 {
     int a=1, b=2, c=4, x;
@@ -101,3 +101,18 @@ int main()
     printf("%d\n", x);
 }
 #endif
+
+//#include<stdio.h>
+   void fun(int *ptr)
+   {
+    int a=10;
+    ptr=&a;
+    printf("%d\n", *ptr);
+   }
+   int main()
+   {
+    int a=20;
+    int *ptr=0;
+    fun(ptr);
+    printf("%d\n", *ptr);
+   }

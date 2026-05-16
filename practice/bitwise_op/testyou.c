@@ -406,7 +406,7 @@ unsigned int reverseBits(unsigned int num)
 {
     unsigned int result = 0;
 
-    for(int i = 0; i < 32; i++)
+    for(int i = 0; i < 8; i++)
     {
         result = (result << 1) | (num & 1);
         num = num >> 1;

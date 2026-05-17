@@ -870,7 +870,7 @@ int main()
 {
     Employee e1(10), e2(11, (char *) "Tingu");
     cout << "ID: " << e1.id << endl;
-    cout << "Name: " << e1.name << endl;
+    //cout << "Name: " << e1.name << endl;
     cout << "ID: " << e2.id << endl;
     cout << "Name: " << e2.name << endl;
     return 0;
@@ -878,7 +878,7 @@ int main()
 #endif
 
 #if 0
-//15/05/26
+//15/05/2026
 #include <cstring>
 using namespace std;
 int main()
@@ -915,24 +915,9 @@ int main()
 {
     int *ptr;
     ptr=new int[3]{11,22,33};
-    cout << ptr[0] << endl;
-    cout << ptr[1] << endl;
     cout << ptr[2] << endl;
-    delete ptr;
-    return 0;
-
-}
-#endif
-
-#if 0
-//15/05/26
-#include <cstring>
-using namespace std;
-int main()
-{
-    int *ptr;
-    ptr=new 4; //error, only mention datatype
-    cout << *ptr << endl;
+    cout << ptr[1] << endl;
+    cout << ptr[0] << endl;
     delete ptr;
     return 0;
 
@@ -1103,7 +1088,46 @@ int main()
 }
 #endif
 
+#if 0
+#include<string.h>
+//Inheritance, constructor, destructor
+using namespace std;
+class Parent
+{
+    public:
+        Parent()
+        {
+            cout << " Parent Constructor " << endl;
+        }
+        ~Parent()
+        {
+            cout << " Parent Destructor " << endl;
+        }
+};
+class Child : public Parent
+{
+    public:
+        Child()
+        {
+            cout << "Child Constructor" << endl;
+        }
+        ~Child()
+        {
+            cout << "Child Destructor" << endl;
+        }
+
+};
+
+int main()
+{
+    Parent p;
+    Child c;
+    return 0;
+}
+#endif
+
 #if 1
+//18-05-2026
 #include<string.h>
 //Inheritance, constructor, destructor
 using namespace std;

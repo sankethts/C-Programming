@@ -1129,38 +1129,114 @@ int main()
 #if 1
 //18-05-2026
 #include<string.h>
-//Inheritance, constructor, destructor
+//MultilevelInheritance
 using namespace std;
-class Parent
+class A
 {
     public:
-        Parent()
+        A()
         {
-            cout << " Parent Constructor " << endl;
+            cout << "A Constructor" << endl;
         }
-        ~Parent()
+        ~A()
         {
-            cout << " Parent Destructor " << endl;
-        }
-};
-class Child : public Parent
-{
-    public:
-        Child()
-        {
-            cout << "Child Constructor" << endl;
-        }
-        ~Child()
-        {
-            cout << "Child Destructor" << endl;
+            cout << "A Destructor" << endl;
         }
 
+};
+class B : public A
+{
+    public:
+        B()
+        {
+            cout << "B Constructor" << endl;
+        }
+        ~B()
+        {
+            cout << "B Destructor" << endl;
+        }
+};
+class C : public B
+{
+    public:
+        C()
+        {
+            cout << "C Constructor" << endl;
+        }
+        ~C()
+        {
+            cout << "C Destructor" << endl;
+        }
 };
 
 int main()
 {
-    Parent p;
-    Child c;
+    A a;
+    B b;
+    C c;
     return 0;
 }
+#endif
+
+#if 0
+#include<iostream>
+using namespace std;
+class Emertxe
+{
+    protected:
+    int id;
+    string name;
+    string address;
+    public:
+    Emertxe(int i, string n, string a)
+    {
+        id=i;
+        name=n;
+        address=a;
+    }
+    void display()
+    {
+        cout << "Id: "<< id << endl;
+        cout << "Name: "<< name << endl;
+        cout << "Address: "<< address << endl;
+    }
+};
+class Mentor: public Emertxe
+{
+    string sub;
+    string rank;
+    public:
+    Mentor(int i, string n, string a, string sb, string rn): Emertxe(i, n, a)
+    {
+        sub=sb;
+        rank=rn;
+    }
+    void display()
+    {
+        cout << "Id: "<< id << endl;
+        cout << "Name: "<< name << endl;
+        cout << "Address: "<< address << endl;
+        cout << "Sub: "<< sub << endl;
+        cout << "Rank: "<< rank << endl;
+    }
+};
+class Candidate: public Emertxe
+{
+    string cource;
+    int year;
+    public:
+    Candidate(int i, string n, string a, string crc, int yr): Emertxe(i, n, a)
+    {
+        course=crc;
+        year=yr;
+    }
+    void display()
+    {
+        cout << "Id: "<< id << endl;
+        cout << "Name: "<< name << endl;
+        cout << "Address: "<< address << endl;
+        cout << "Course: "<< course << endl;
+        cout << "Year: "<< yearr << endl;
+    }
+};
 #endif

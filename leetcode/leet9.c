@@ -7,7 +7,7 @@ int is_palin(int x)
         return 0;
     }
 
-    int rev;
+    int rev=0;
     while(x>rev)
     {
         rev=rev*10+x%10;

@@ -383,7 +383,7 @@ int main()
 }
 #endif
 
-#if 0
+#if 1
 //wap to reverse bits
 //Original : 00000000 00000000 00000000 00001101   (13)
 //Reversed : 10110000 00000000 00000000 00000000   (11)
@@ -576,7 +576,7 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 // Endiann conversion using loop and bitwise
 unsigned int swapEndian(unsigned int num)
 {

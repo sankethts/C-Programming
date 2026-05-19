@@ -4,40 +4,31 @@
 #include<stdio.h>
 void reverse(char str[], int start, int end)
 {
-    while(start<end)
-    {
-        char temp=str[start];
-        str[start]=str[end];
-        str[end]=temp;
-        start++;
-        end--;
-    }
+  for(int i=0; ; i++)
+  {
+      if(str[i]==' ' || str[i]=='\0')
+      {
+          end=i-1;
+          while(start<end)
+          {
+              char temp=str[start];
+              str[start]=str[end];
+              str[end]=temp;
+              start++;
+              end--;
+          }
+          start=i+1;
+      }
+      if(str[i] == '\0')
+       break;
+  }          
 }
 int main()
 {
-    char str[50];
-    printf("Enter string: ");
-    scanf(" %[^\n]", str);
-    int i=0, start, end;
-    while(str[i]!='\0')
-    {
-        // skip spaces
-        while(str[i]==' ')
-          i++;
-
-        // If end reached after skipping spaces
-          if(str[i]=='\0')
-          break;
-
-        start=i;
-
-        // Move till end of word
-        while(str[i]!=' ' && str[i]!='\0')
-          i++;
-
-        end=i-1;
-        reverse(str, start, end);
-    }
-    printf("%s\n", str);
-    return 0;
+    char str[100];
+    int i=0, start=0, end=0;
+    printf("Enter the string: ");
+    scanf("%[^\n]", str);
+    reverse(str, start, end);
+    printf("Reversed string:\n%s\n", str);
 }

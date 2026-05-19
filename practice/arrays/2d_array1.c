@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 #if 0
 //Declare and initialize a 3×3 2D array and print all elements.
 int main()
@@ -610,5 +611,48 @@ void print(int n, int arr[][n])
         }
         printf("\n");
     }
+}
+#endif
+
+#if 0
+//Dynamically allocate a 2D array using malloc/calloc and free it.
+int main()
+{
+    int r, c;
+    printf("Enter number of rows and columns: ");
+    scanf("%d %d", &r, &c);
+
+    int **arr = malloc(r * sizeof(int *));
+
+    for(int i=0; i<r; i++)
+    {
+        arr[i] = malloc(c * sizeof(int));
+    }
+
+    printf("Enter array elements:\n");
+    for(int i=0; i<r; i++)
+    {
+        for(int j=0; j<c; j++)
+        {
+            scanf("%d", &arr[i][j]);
+        }
+    }
+
+    printf("Array elements are:\n");
+    for(int i=0; i<r; i++)
+    {
+        for(int j=0; j<c; j++)
+        {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+
+    for(int i=0; i<r; i++)
+    {
+        free(arr[i]);
+    }
+    free(arr);
+    return 0;
 }
 #endif

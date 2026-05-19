@@ -13,6 +13,26 @@ void reverse(char *str, int start, int end)
         start++;
         end--;
     }
+    
+    start=0;
+    for(int i=0; ; i++)
+    {
+        if(str[i]==' ' || str[i]=='\0')
+        {
+            end=i-1;
+            while(start<end)
+            {
+                char temp=str[start];
+                str[start]=str[end];
+                str[end]=temp;
+                start++;
+                end--;
+            }
+            start=i+1;
+        }
+        if(str[i] == '\0')
+        break;
+    } 
 }
 int main()
 {
@@ -22,20 +42,6 @@ int main()
     int i, start, end;
     int size=strlen(str);
     reverse(str, 0, size-1);
-    i=0;
-    while(str[i]!='\0')
-    {
-        while(str[i]==' ')
-         i++;
-            
-        start=i;
-
-        while(str[i]!=' ' && str[i]!='\0')
-          i++;
-
-        end=i-1;
-        reverse(str, start, end);
-    }
-    printf("%s\n", str);
+    printf("Reversed string:\n%s\n", str);
 }
 

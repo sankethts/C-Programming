@@ -1,5 +1,6 @@
 //Array of pointers
 #include<stdio.h>
+#include<stdlib.h>
 #if 0
 //Declare an array of integer pointers; assign values and print.
 int main()
@@ -75,7 +76,7 @@ int main()
     arr[1] = a2;
     arr[2] = &a3;
 
-    //a1[5]
+    //a1[4]
     printf("arr[0]\n");
     for(int i=0; i<4; i++)
     {
@@ -83,7 +84,7 @@ int main()
     }
     printf("\n");
 
-    //a1[5]
+    //a2[5]
     printf("arr[1]\n");
     for(int i=0; i<5; i++)
     {
@@ -92,6 +93,133 @@ int main()
     printf("\n");
 
     printf("arr[%d] = %d\n", 2, *arr[2]);
+
+}
+#endif
+
+#if 0
+//Sort integers using an array of pointers (pointer-based sort).
+int main()
+{
+    int n;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    int *ptr[n];
+
+    printf("Enter array elements: ");
+    for(int i=0; i<n; i++)
+    {
+        scanf("%d", &arr[i]);
+        ptr[i]=&arr[i];
+    }
+
+    printf("Original array:\n");
+    for(int i=0; i<n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    for(int i=0; i<n-1; i++)
+    {
+        for(int j=0; j<n-i-1; j++)
+        {
+            if(*ptr[j] > *ptr[j+1])
+            {
+                int temp=*ptr[j];
+                *ptr[j]=*ptr[j+1];
+                *ptr[j+1]=temp;
+            }
+        }
+    }
+
+    printf("After sorting via array of pointer:\n");
+    for(int i=0; i<n; i++)
+    {
+        printf("%d ", *ptr[i]);
+    }
+    printf("\n");
+}
+#endif
+
+#if 0
+//Implement a dynamic array using an array of pointers.
+int main()
+{
+    int n;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    int *arr[n];
+
+    printf("Enter array elements: ");
+    for(int i=0; i<n; i++)
+    {
+        arr[i]=malloc(sizeof(int));
+        if(arr[i] == NULL)
+        {
+            printf("Memory allocation failed\n");
+            return 0;
+        }
+        scanf("%d", arr[i]);
+    }
+
+    printf("Array elements:\n");
+    for(int i=0; i<n; i++)
+    {
+        printf("arr[%d] = %d @ %u\n", i, *arr[i], arr[i]);
+    }
+
+    for(int i=0; i<n; i++)
+    {
+        free(arr[i]);
+    }
+}
+#endif
+
+#if 1
+//Implement a dynamic 2d array using an array of pointers.
+int main()
+{
+    int r, c;
+    printf("Enter number of rows and columns: ");
+    scanf("%d %d", &r, &c);
+
+    int *arr[r];
+
+    for(int i=0; i<r; i++)
+    {
+        arr[i]=malloc(c * sizeof(int));
+        if(arr[i] == NULL)
+        {
+            printf("Memory allocation failed\n");
+            return 0;
+        }
+    }
+
+    printf("Enter Array elements:\n");
+    for(int i=0; i<r; i++)
+    {
+        for(int j=0; j<c; j++)
+        {
+            scanf("%d", &arr[i][j]);
+        }
+    }
+
+    printf("Array elements are:\n");
+    for(int i=0; i<r; i++)
+    {
+        for(int j=0; j<c; j++)
+        {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+
+    for (int i = 0; i < r; i++)
+        free(arr[i]);
 
 }
 #endif

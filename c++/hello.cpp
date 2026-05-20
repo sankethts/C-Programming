@@ -1126,10 +1126,10 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 //18-05-2026
 #include<string.h>
-//MultilevelInheritance
+//Multilevel Inheritance
 using namespace std;
 class A
 {
@@ -1179,64 +1179,285 @@ int main()
 #endif
 
 #if 0
+//19-05-2026
+//constructor invocation explicitly
 #include<iostream>
 using namespace std;
-class Emertxe
+class Polygon
 {
     protected:
-    int id;
-    string name;
-    string address;
+    int width;
+    int height;
     public:
-    Emertxe(int i, string n, string a)
+    Polygon(int a, int b) : width(a), height(b)//we can assign value like this also
     {
-        id=i;
-        name=n;
-        address=a;
+        
     }
     void display()
     {
-        cout << "Id: "<< id << endl;
-        cout << "Name: "<< name << endl;
-        cout << "Address: "<< address << endl;
+        cout << width << " " << height << endl;
     }
 };
-class Mentor: public Emertxe
+int main()
 {
-    string sub;
-    string rank;
-    public:
-    Mentor(int i, string n, string a, string sb, string rn): Emertxe(i, n, a)
-    {
-        sub=sb;
-        rank=rn;
-    }
-    void display()
-    {
-        cout << "Id: "<< id << endl;
-        cout << "Name: "<< name << endl;
-        cout << "Address: "<< address << endl;
-        cout << "Sub: "<< sub << endl;
-        cout << "Rank: "<< rank << endl;
-    }
-};
-class Candidate: public Emertxe
+    Polygon P = Polygon(4, 20);
+    P.display();
+    return 0;
+}
+#endif
+
+#if 0
+//19-05-2026
+//dynamic object creation using new
+#include<iostream>
+using namespace std;
+class Polygon
 {
-    string cource;
-    int year;
+    protected:
+    int width;
+    int height;
     public:
-    Candidate(int i, string n, string a, string crc, int yr): Emertxe(i, n, a)
+    Polygon(int a, int b) : width(a), height(b)//we can assign value like this also
     {
-        course=crc;
-        year=yr;
+        cout << "Constructor is called\n";
     }
     void display()
     {
-        cout << "Id: "<< id << endl;
-        cout << "Name: "<< name << endl;
-        cout << "Address: "<< address << endl;
-        cout << "Course: "<< course << endl;
-        cout << "Year: "<< yearr << endl;
+        cout << width << " " << height << endl;
+    }
+    ~Polygon()
+    {
+        cout << "Destructor is called\n";
     }
 };
+int main()
+{
+    Polygon *P = new Polygon(4, 20);
+    P->display();
+    delete P;
+    return 0;
+}
+#endif
+
+#if 0
+//19-05-2026
+//dynamic object creation using malloc
+#include<stdlib.h>
+#include<iostream>
+using namespace std;
+class Polygon
+{
+    protected:
+    int width;
+    int height;
+    public:
+    Polygon(int a, int b) : width(a), height(b)//we can assign value like this also
+    {
+        cout << "Constructor is called\n";
+    }
+    void display()
+    {
+        cout << width << " " << height << endl;
+    }
+    ~Polygon()
+    {
+        cout << "Destructor is called\n";
+    }
+};
+int main()
+{
+    Polygon *P = (Polygon *)malloc(sizeof(Polygon));//malloc will not call constructor and destructor
+    P->display();
+    free(P);//not call destructor
+    return 0;
+}
+#endif
+
+#if 0
+//19-05-2026
+//pointer to base class
+#include<stdlib.h>
+#include<iostream>
+using namespace std;
+class Polygon 
+{
+    protected:
+    int width, height;
+    public:
+    void set_values(int a, int b)
+    {
+        width=a; height=b;
+    }
+};
+class Rectangle: public Polygon 
+{
+    public:
+    int area()
+    {
+        return width*height;
+    }
+}; 
+class Triangle: public Polygon 
+{
+    public:
+    int area()
+    {
+        return width*height/2;
+    }
+};
+int main ()
+{
+    Rectangle rect;
+    Triangle trgl;
+    Polygon * ppoly1 = &rect;
+    Polygon * ppoly2 = &trgl;
+    ppoly1->set_values (4,5);
+    ppoly2->set_values (4,5);
+    cout << rect.area() << endl;
+    cout << trgl.area() << endl;
+    return 0; 
+}
+#endif
+
+#if 0
+//function overloading
+using namespace std;
+int add(int a, int b)
+{
+    return a+b;
+}
+double add(double a, int b)
+{
+    return a+b;
+}
+double add(int a, double b)
+{
+    return a+b;
+}
+string add(string s1, string s2)
+{
+    return s1+s2;
+}
+int main()
+{
+    cout << add(5, 10) << endl;
+    cout << add(5.5, 10) << endl;
+    cout << add(5, 10.5) << endl;
+    cout << add("sanke", "th ts") << endl;
+    return 0;
+}
+#endif
+
+#if 0
+//operator overloading
+//unary
+using namespace std;
+class Distance
+{
+    int inches, feet;
+    public:
+    Distance(int i=0, int f=0) : inches(i), feet(f)
+    {
+
+    }
+    void display()
+    {
+        cout << inches << " " << feet << endl;
+    }
+    void operator -() 
+    {
+        inches = -inches;
+        feet = -feet;
+    }
+};
+int main()
+{
+    Distance d1(11,0), d2(0, 11);
+    -d1;
+    d1.display();
+    -d2;
+    d2.display();
+    return 0;
+}
+#endif
+
+#if 0
+//operator overloading
+//unary
+using namespace std;
+class Distance
+{
+    int inches, feet;
+    public:
+    Distance(int i=0, int f=0) : inches(i), feet(f)
+    {
+
+    }
+    void display()
+    {
+        cout << inches << " " << feet << endl;
+    }
+    void operator ++() 
+    {
+        inches += 2;
+        feet += 2;
+    }
+    void operator ++(int)
+    {
+        inches += 2;
+        feet += 2;
+    }
+};
+int main()
+{
+    Distance d1(11,10), d2(-5, 11);
+    ++d1;
+    d1.display();
+    d1++;
+    d1.display();
+    d2++;
+    d2.display();
+    return 0;
+}
+#endif
+
+#if 1
+//20-05-2026
+//operator overloading
+//binary
+using namespace std;
+class Distance
+{
+    int inches, feet;
+    public:
+    Distance(int i=0, int f=0) : inches(i), feet(f)
+    {
+
+    }
+    void display()
+    {
+        cout << inches << " " << feet << endl;
+    }
+    void operator ++() 
+    {
+        inches += 2;
+        feet += 2;
+    }
+    void operator ++(int)
+    {
+        inches += 2;
+        feet += 2;
+    }
+};
+int main()
+{
+    Distance d1(11,10), d2(-5, 11);
+    ++d1;
+    d1.display();
+    d1++;
+    d1.display();
+    d2++;
+    d2.display();
+    return 0;
+}
 #endif

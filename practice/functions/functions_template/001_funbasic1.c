@@ -37,7 +37,7 @@ int foo(int m)
 }
 
 #endif
-#if 1
+#if 0
 #include <stdio.h>
 
 int foo(int m)

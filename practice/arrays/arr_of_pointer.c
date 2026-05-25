@@ -179,7 +179,7 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 //Implement a dynamic 2d array using an array of pointers.
 int main()
 {
@@ -221,5 +221,110 @@ int main()
     for (int i = 0; i < r; i++)
         free(arr[i]);
 
+}
+#endif
+
+#if 0
+//Use an array of function pointers to implement a menu-driven calculator.
+
+float add(float a, float b) { return a + b; }
+float sub(float a, float b) { return a - b; }
+float mul(float a, float b) { return a * b; }
+float dvd(float a, float b) {
+    if (b == 0) { printf("Division by zero!\n"); return 0; }
+    return a / b;
+}
+
+int main() {
+    // array of function pointers
+    float (*operations[4])(float, float) = {add, sub, mul, dvd};
+    char *menu[] = {"Add", "Subtract", "Multiply", "Divide"};
+
+    int choice;
+    float a, b;
+
+    while (1) {
+        printf("\n─── Calculator ───\n");
+        for (int i = 0; i < 4; i++)
+            printf("%d. %s\n", i + 1, menu[i]);
+        printf("5. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 5) {
+            printf("Exiting...\n");
+            break;
+        }
+
+        if (choice < 1 || choice > 4) {
+            printf("Invalid choice!\n");
+            continue;
+        }
+
+        printf("Enter two numbers: ");
+        scanf("%f %f", &a, &b);
+
+        // call function via pointer
+        float result = operations[choice - 1](a, b);
+        printf("Result: %.2f\n", result);
+    }
+
+    return 0;
+}
+#endif
+
+#if 1
+//Create an array of pointers to struct and access members.
+#include <stdio.h>
+#include <string.h>
+
+struct Student {
+    int  id;
+    char name[50];
+    float marks;
+};
+
+int main() {
+    int n;
+
+    printf("Enter number of students: ");
+    scanf("%d", &n);
+
+    // array of struct variables
+    struct Student students[n];
+
+    // array of pointers to struct
+    struct Student *ptr[n];
+
+    // assign addresses
+    for (int i = 0; i < n; i++)
+        ptr[i] = &students[i];
+
+    // input via pointers
+    for (int i = 0; i < n; i++) {
+        printf("\nEnter details of student %d:\n", i + 1);
+        printf("ID: ");
+        scanf("%d", &ptr[i]->id);
+        printf("Name: ");
+        scanf("%s", ptr[i]->name);
+        printf("Marks: ");
+        scanf("%f", &ptr[i]->marks);
+    }
+
+    // print via pointers
+    printf("\n%-5s %-20s %-10s\n", "ID", "Name", "Marks");
+    printf("─────────────────────────────────\n");
+    for (int i = 0; i < n; i++)
+        printf("%-5d %-20s %-10.2f\n", ptr[i]->id, ptr[i]->name, ptr[i]->marks);
+
+    // access individual members
+    printf("\nHighest marks: ");
+    struct Student *top = ptr[0];
+    for (int i = 1; i < n; i++)
+        if (ptr[i]->marks > top->marks)
+            top = ptr[i];
+    printf("%s (%.2f)\n", top->name, top->marks);
+
+    return 0;
 }
 #endif

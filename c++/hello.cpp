@@ -1387,25 +1387,25 @@ int main()
 using namespace std;
 class Distance
 {
-    int inches, feet;
+    int feet, inches;
     public:
-    Distance(int i=0, int f=0) : inches(i), feet(f)
+    Distance(int f=0, int i=0) : feet(f), inches(i)
     {
 
     }
     void display()
     {
-        cout << inches << " " << feet << endl;
+        cout << "F: " << feet << " I: " << inches << endl;
     }
     void operator ++() 
     {
-        inches += 2;
         feet += 2;
+        inches += 2;
     }
     void operator ++(int)
     {
-        inches += 2;
         feet += 2;
+        inches += 2;
     }
 };
 int main()
@@ -1421,43 +1421,504 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 //20-05-2026
 //operator overloading
 //binary
 using namespace std;
-class Distance
+class Binary
 {
-    int inches, feet;
+    int i, i1;
     public:
-    Distance(int i=0, int f=0) : inches(i), feet(f)
+    Binary(int i=0, int f=0) : i(i), i1(f)
     {
 
     }
     void display()
     {
-        cout << inches << " " << feet << endl;
+        cout << i << " " << i1 << endl;
     }
-    void operator ++() 
+    void operator +(int a) 
     {
-        inches += 2;
-        feet += 2;
+        i += a;
+        i1 += a;
     }
-    void operator ++(int)
+    void operator +(Binary b)
     {
-        inches += 2;
-        feet += 2;
+        i += b.i;
+        i1 += b.i1;
     }
 };
 int main()
 {
-    Distance d1(11,10), d2(-5, 11);
-    ++d1;
-    d1.display();
-    d1++;
-    d1.display();
-    d2++;
-    d2.display();
+    Binary b1(11,10), b2(-5, 11);
+    int a=10;
+    b1+a;
+    b1.display();
+    b1+b2;
+    b1.display();
+    b2.display();
     return 0;
+}
+#endif
+
+#if 0
+//function overriding
+//without virtual function
+using namespace std;
+class BaseClass
+{
+    public:
+    void disp()
+    {
+        cout<<"Function of Parent Class\n";
+    }
+};
+class DerivedClass: public BaseClass
+{
+    public:
+    void disp()
+    {
+        cout<<"Function of Child Class\n";
+    }
+};
+int main()
+{
+    BaseClass obj = DerivedClass();
+    obj.disp();
+    return 0;
+}
+#endif
+
+#if 0
+//function overriding
+//using pointer
+//without virtual function
+using namespace std;
+class BaseClass
+{
+    public:
+    void disp()
+    {
+        cout<<"Function of Parent Class\n";
+    }
+};
+class DerivedClass: public BaseClass
+{
+    public:
+    void disp()
+    {
+        cout<<"Function of Child Class\n";
+    }
+};
+int main()
+{
+    BaseClass *obj = new DerivedClass();
+    obj->disp();
+    return 0;
+}
+#endif
+
+#if 0
+//function overriding
+//with virtual function
+using namespace std;
+class BaseClass
+{
+    public:
+    virtual void disp()
+    {
+        cout<<"Function of Parent Class\n";
+    }
+};
+class DerivedClass: public BaseClass
+{
+    public:
+    void disp()
+    {
+        cout<<"Function of Child Class\n";
+    }
+};
+int main()
+{
+    BaseClass *obj = new DerivedClass();
+    obj->disp();
+    return 0;
+}
+#endif
+
+#if 0
+//function overriding
+//with pure virtual function
+using namespace std;
+class BaseClass
+{
+    public:
+    virtual void disp();
+};
+class DerivedClass: public BaseClass
+{
+    public:
+    void disp()
+    {
+        cout<<"Function of Child Class\n";
+    }
+};
+int main()
+{
+    BaseClass *obj = new DerivedClass();
+    obj->disp();
+    return 0;
+}
+#endif
+
+#if 0
+//abstract class
+#include <iostream>
+using namespace std;
+class Polygon
+{
+    protected:
+    int width, height;
+    string shape_name;
+    public:
+    Polygon() 
+    {
+
+    }
+    Polygon(int a, int b, string name) : width(a), height(b), shape_name(name) 
+    { 
+
+    }
+    string get_name(void) 
+    {
+        return shape_name;
+    }
+    // A pure virtual functions
+    virtual int get_area(void) = 0;
+    void print_area(void) 
+    {
+        cout << "Area of " << this->get_name() << " is "<< this->get_area() << endl;
+    }
+};
+class Rectangle: public Polygon
+{
+    public:
+    Rectangle(int a, int b, string name) : Polygon(a, b, name) 
+    { 
+
+    }
+    int get_area(void)
+    {
+        return width * height;
+    }
+};
+class Triangle: public Polygon
+{
+    public:
+    Triangle(int a, int b, string name) : Polygon(a, b, name) 
+    { 
+        
+    }
+    int get_area(void)
+    {
+        return width * height / 2;
+    }
+};
+int main()
+{
+    Rectangle rect (4, 5, "Rectangle");
+    Triangle trgl (4, 5, "Triangle");
+    Polygon *shapes[] = {&rect, &trgl};
+    for (int i = 0; i < 2; i++)
+    {
+        shapes[i]->print_area();
+    }
+    return 0;
+}
+#endif
+
+#if 0
+//friend() we can access private members of class outside class
+using namespace std;
+class Employee
+{
+    int id;
+    string name;
+    string address;
+    public: Employee()
+    {
+        id=123;
+        name="sanketh";
+        address="Bangalore";
+    }
+    friend void print_data(Employee emp1);
+};
+void print_data(Employee emp1)
+{
+    cout << emp1.id << endl;
+    cout << emp1.name << endl;
+    cout << emp1.address << endl;
+}
+int main()
+{
+    Employee emp1;
+    print_data(emp1);
+    return 0;
+}
+#endif
+
+#if 0
+//ambiguity in multiple inheritance
+//can overcome using scope resolution operator
+using namespace std;
+class A
+{
+    public:
+    int x;
+    void disp()
+    {
+        cout << x << endl;
+    }
+};
+class B: public A
+{
+    public :
+    B()
+    {
+        x=123;
+    }
+};
+class C: public A
+{
+    public:
+    C()
+    {
+        x=987;
+    }
+};
+class D: public B, public C
+{
+
+};
+int main()
+{
+    D obj;
+    //obj.disp();
+    obj.B::disp();
+    obj.C::disp();
+    return 0;
+}
+#endif
+
+#if 0
+using namespace std;
+//namespace
+int x=10;
+int main()
+{
+    double x=10.5;
+    cout << x << endl;
+}
+#endif
+
+#if 0
+//namespace
+using namespace std;
+namespace global
+{
+    int x=10;
+}
+int main()
+{
+    double x=10.5;
+    cout << x << endl;
+    cout << global::x << endl;
+}
+#endif
+
+#if 0
+//namespace
+using namespace std;
+int x=10;
+int main()
+{
+    double x=10.5;
+    {
+        extern int x;
+        cout << x << endl;
+    }
+    
+}
+#endif
+
+#if 0
+//namespace
+using namespace std;
+namespace first
+{
+int x=10;
+}
+namespace second
+{
+    double x=12.234;
+}
+int main()
+{
+    double x=10.5;
+    cout << x << endl;
+    cout << first::x << endl;
+    cout << second::x << endl;
+}
+#endif
+
+#if 0
+//namespace
+using namespace std;
+namespace first
+{
+    int x=10;
+}
+namespace second
+{
+    double x=12.234;
+}
+int main()
+{
+    //double x=10.5;
+    using namespace first;
+    cout << x << endl;
+    // cout << first::x << endl;
+    // cout << second::x << endl;
+}
+#endif
+
+#if 0
+//namespace
+using namespace std;
+namespace myspace
+{
+    class employee
+    {
+        //public: //error
+        int x;
+        string name;
+    };
+}
+class employee
+{
+    public:
+    int x;
+    string name;
+};
+int main()
+{
+    employee e1;
+    myspace::employee e2;
+    e1.name="tingu";
+    e2.name="pingu";
+    cout << e1.name << endl;
+    cout << e2.name << endl;
+}
+#endif
+
+#if 0
+//namespace
+using namespace std;
+namespace myspace
+{
+    class employee
+    {
+        //public: //error
+        int x;
+        string name;
+    };
+}
+class employee
+{
+    public:
+    int x;
+    string name;
+};
+int main()
+{
+    employee e1;
+    myspace::employee e2;
+    e1.name="tingu";
+    e2.name="pingu";
+    cout << e1.name << endl;
+    cout << e2.name << endl;
+}
+#endif
+
+#if 0
+//function template
+using namespace std;
+template <typename T>
+T Max (T a, T b)// 'max' will be error, because max() is built-in()
+{
+    return b < a ? a : b;
+}
+int main()
+{
+    cout << Max(10, 20) << endl;
+    cout << Max(33.5, 20.2) << endl;
+    cout << Max(3.5, 10.2) << endl;
+    cout << Max('A', 'B') << endl;
+    cout << Max('Z', 'Y') << endl;
+    return 0;
+}
+#endif
+
+#if 0
+//class template
+using namespace std;
+template <class T>
+class MyTemplate
+{
+    T element;
+    public:
+    MyTemplate (T arg)
+    {
+        element=arg;
+    }
+    T divideBy2 ()
+    {
+        return element/2;
+    }
+};
+int main()
+{
+    MyTemplate <int>m(10);
+    cout<<"division: "<<m.divideBy2()<<endl;
+    MyTemplate <float>m1(10.50f);
+    cout<<"division: "<<m1.divideBy2()<<endl;
+    return 0;
+}
+#endif
+
+#if 1
+using namespace std;
+int main()
+{
+    int a, b;
+    cout << "Enter two values: ", cin >> a >> b;
+    //cin >> a >> b;
+    try
+    {
+        if (b != 0) 
+        {
+            cout << "Res: " << a / b << endl;
+        }
+        else 
+        {
+            throw b;
+        }
+    }
+    //cout << b << endl; //error
+    catch(int x)
+    {
+        cout << "Caught DIVIDE_BY_ZERO ERROR" << "b: "<< x << endl;
+    }
 }
 #endif

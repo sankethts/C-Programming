@@ -583,15 +583,29 @@ int main()
         }
     }
 
-    //reverse 90
+    // //reverse 90
+    // for(int i=0; i<n; i++)
+    // {
+    //     int left =0, right=n-1;
+    //     while(left<right)
+    //     {
+    //         int temp=arr[i][left];
+    //         arr[i][left]=arr[i][right];
+    //         arr[i][right]=temp;
+    //         left++;
+    //         right--;
+    //     }
+    // }
+
+    //reverse 90 anticlockwise
     for(int i=0; i<n; i++)
     {
         int left =0, right=n-1;
         while(left<right)
         {
-            int temp=arr[i][left];
-            arr[i][left]=arr[i][right];
-            arr[i][right]=temp;
+            int temp=arr[left][i];
+            arr[left][i]=arr[right][i];
+            arr[right][i]=temp;
             left++;
             right--;
         }
@@ -614,7 +628,7 @@ void print(int n, int arr[][n])
 }
 #endif
 
-#if 0
+#if 1
 //Dynamically allocate a 2D array using malloc/calloc and free it.
 int main()
 {

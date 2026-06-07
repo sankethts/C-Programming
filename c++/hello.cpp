@@ -1897,7 +1897,7 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 using namespace std;
 int main()
 {
@@ -1920,5 +1920,145 @@ int main()
     {
         cout << "Caught DIVIDE_BY_ZERO ERROR" << "b: "<< x << endl;
     }
+}
+#endif
+
+#if 0
+//strings
+using namespace std;
+int main()
+{
+    string s = "HELLO";
+    string s1 = "HELLO";
+    if(s.compare(s1) == 0)
+     cout << s << " is equal to " << s1 << endl;
+    else
+     cout << s << " is not equal to " << s1 << endl;
+    s.append(" WORLD!");
+    cout << s << endl;
+    printf("%s\n", s.c_str());
+    if(s.compare(s1) == 0)
+     cout << s << " is equal to " << s1 << endl;
+    else
+     cout << s << " is not equal to " << s1 << endl;
+    return 0;
+}
+#endif
+
+#if 0
+//vecor
+#include<vector>
+using namespace std;
+int main()
+{
+    vector <int> v;
+    vector <int> :: iterator it;
+    v.push_back(5);
+    while(v.back() > 0)
+     v.push_back(v.back() - 1);
+
+    for(it = v.begin(); it != v.end(); ++it)
+     cout << *it << ' '; cout << endl;
+
+    for(int i=0; i<v.size(); ++i)
+      cout << v.at(i) << ' '; cout << endl;
+
+    while(!v.empty())
+    {
+     cout << v.back() << ' '; v.pop_back();
+    }
+    cout << endl;
+    return 0;
+}
+#endif
+
+#if 0
+//list
+#include<list>
+using namespace std;
+int main()
+{
+    list <int> li;
+    list <int> :: iterator it;
+    li.push_back(4);
+    li.push_back(5);
+    li.push_front(3);
+    li.push_front(5);
+    it = li.begin();
+    li.insert(it, 1);
+    cout << "All elements of list li are: " << endl;
+
+    for(it = li.begin(); it != li.end(); ++it)
+     cout << *it << ' '; cout << endl;
+
+    li.reverse();
+    cout << "All elements of list li are after reversing:" << endl;
+    for(it=li.begin(); it!=li.end(); ++it)
+      cout << *it << ' '; cout << endl;
+    
+    li.remove(5);
+    cout << "Elements after removing all occurence of 5 from list" << endl;
+    for(it=li.begin(); it!=li.end(); ++it)
+      cout << *it << ' '; cout << endl;
+
+    li.pop_back();
+    li.pop_front();
+    return 0;
+}
+#endif
+
+#if 0
+//pair
+#include<utility>//without this header file, i am getting output, research it
+using namespace std;
+int main()
+{
+    pair <int, char> p;
+    pair <int, char> p1(2, 'b');
+    p=make_pair(1, 'a');
+    cout << p.first << ' ' << p.second << endl;
+    cout << p1.first << ' ' << p1.second << endl;
+    return 0;
+}
+#endif
+
+#if 0
+//set
+#include<set>
+using namespace std;
+int main()
+{
+    set <int> s;
+    set <int> :: iterator it;
+    int a[]={3,5,2,1,5,4};
+    for(int i=0;i<6; i++)
+     s.insert(a[i]);
+
+    for(it=s.begin(); it != s.end(); it++)
+     cout << *it << ' '; cout << endl;
+    return 0;
+}
+#endif
+
+#if 1
+//map
+#include<utility>
+#include<map>//mp['key]=value
+using namespace std;
+int main()
+{
+    map <char, int> mp;
+    mp['b']=10;
+    mp['x']=5;
+    mp['c']=9;
+    mp['t']=21;
+    mp['a']=19;
+    mp['n']=34;
+    mp['z']=1;
+    map <char, int> :: iterator it;
+
+    for(it=mp.begin(); it != mp.end(); it++)
+     cout << it->first << "->" << it->second << endl;
+    return 0;
 }
 #endif

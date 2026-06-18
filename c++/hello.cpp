@@ -595,7 +595,7 @@ class Employee
 int main()
 {
     Employee emp1(123, (char *)"sanketh");
-    Employee emp2;//this gives error, so write empty constructor function
+    Employee emp2;
     cout << emp1.id << endl;
     cout << emp1.name << endl << endl;
     cout << emp2.id << endl;
@@ -1421,7 +1421,7 @@ int main()
 }
 #endif
 
-#if 0
+#if 0       
 //20-05-2026
 //operator overloading
 //binary
@@ -2040,7 +2040,7 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 //map
 #include<utility>
 #include<map>//mp['key]=value
